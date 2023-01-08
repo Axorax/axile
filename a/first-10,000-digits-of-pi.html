@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First 10,000 digits of Pi - Axile</title>
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/a1.css" />
+    <link rel="shortcut icon" href="../assets/img/axile.svg" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta property="article:published_time" content="2022-08-30" />
+    <meta property="article:modified_time" content="2022-08-30" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:site_name" content="Axorax" />
+    <meta name="twitter:site" content="Axorax" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="First 10,000 digits of pi" />
+    <meta name="twitter:title" content="First 10,000 digits of pi" />
+    <meta
+      property="og:url"
+      content="https://axorax.tk/a/first-10,000-digits-of-pi"
+    />
+    <meta
+      name="twitter:url"
+      content="https://axorax.tk/a/first-10,000-digits-of-pi"
+    />
+    <meta
+      property="og:image"
+      content="https://axorax.tk/assets/img/banner/first-10,000-digits-of-pi.png"
+    />
+    <meta
+      name="twitter:image"
+      content="https://axorax.tk/assets/img/banner/first-10,000-digits-of-pi.png"
+    />
+    <meta
+      name="description"
+      content="View the first ten thousand digits of pi"
+    />
+    <meta
+      name="twitter:description"
+      content="View the first ten thousand digits of pi"
+    />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1080" />
+    <meta name="keywords" content="pi, math" />
+    <meta property="article:tag" content="pi" />
+    <meta property="article:tag" content="math" />
+    <style>
+      .code-box-1 span {
+        font-family: "Inconsolata", monospace !important;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="overlay"></div>
+
+    <main>
+      <div class="title">First 10,000 digits of Pi</div>
+      <div class="details">
+        <a href="" class="publishDate"><span>30 August 2022</span></a>
+        <span class="sep">•</span> <span class="tags"></span>
+      </div>
+
+      Pi (π) is an irrational number. You cannot write it as a finite decimal.
+      You need an approximate value for pi. Here are 10,000 digits of pi:
+
+      <br /><br />
+
+      <button
+        class="button-1"
+        style="margin-bottom: -2rem"
+        onclick="highlightPi()"
+      >
+        Enable Highlight
+      </button>
+
+      <p
+        class="val code-box-1"
+        style="
+          width: 100%;
+          max-width: 100%;
+          word-wrap: break-word;
+          margin: 1.5rem 0 -1.5rem 0;
+        "
+      ></p>
+    </main>
+
+    <footer></footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+      let x = false;
+      const b = document.querySelector(".button-1");
+      const y = generateValueOfPi(10019n);
+      document.querySelector(".val").innerHTML = y;
+
+      function highlightPi() {
+        if (x) {
+          document.querySelector(".val").innerHTML = y;
+          b.textContent = "Enable Highlight";
+          x = false;
+        } else {
+          const format = y
+            .replaceAll("0", '<span style="color:mintcream">0</span>')
+            .replaceAll("1", '<span style="color:darkorange">1</span>')
+            .replaceAll("2", '<span style="color:greenyellow">2</span>')
+            .replaceAll("3", '<span style="color:darksalmon">3</span>')
+            .replaceAll("4", '<span style="color:darkkhaki">4</span>')
+            .replaceAll("5", '<span style="color:moccasin">5</span>')
+            .replaceAll("6", '<span style="color:slateblue">6</span>')
+            .replaceAll("7", '<span style="color:orangered">7</span>')
+            .replaceAll("8", '<span style="color:firebrick">8</span>')
+            .replaceAll("9", '<span style="color:royalblue">9</span>')
+            .replace(
+              '<span style="color:darksalmon">3</span>.',
+              '<span style="color:cornflowerblue">3.</span>'
+            );
+          document.querySelector(".val").innerHTML = format;
+          b.textContent = "Disable Highlight";
+          x = true;
+        }
+      }
+    </script>
+    <script src="../assets/js/a1.js"></script>
+  </body>
+</html>

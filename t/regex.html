@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MM3W2VF0HL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MM3W2VF0HL');
+</script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Run - Axile</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/a1.css">
+    <link rel="shortcut icon" href="../assets/img/axile.svg">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7103747153410969"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <main>
+<br>
+<input id="i" class="input-1 full-width" placeholder="Type text here..."></input>
+<button id="b" class="button-1 full-w" style="margin-top: 1rem">Convert</button><div class="d-1 round" style="margin: 4rem 0"></div>
+<textarea id="o" class="input-1 full-width" cols="30" rows="10" placeholder="Greek output here..."></textarea>
+    </main>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/t1.js"></script>
+    <script>
+        let reg;
+        let str = 'axorax is so cute and hot'
+        const input = document.querySelector('#i');
+        const output = document.querySelector('#o');
+        const button = document.querySelector('#b');
+        button.addEventListener('click', () => {
+            reg = new RegExp('[a-z]', 'i');
+            reg = reg.exec(str)
+            alert(str.replaceAll(String(reg), `/${String(reg)}/`) + ' : : ' + reg[0])
+        })
+    </script>
+
+</body>
+</html>

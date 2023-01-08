@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-MM3W2VF0HL"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MM3W2VF0HL");
+    </script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text to Lower Greek Converter - Axile</title>
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/a1.css" />
+    <link rel="shortcut icon" href="../assets/img/axile.svg" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:site_name" content="Axorax" />
+    <meta name="twitter:site" content="Axorax" />
+    <meta property="og:title" content="Convert text to lower Greek" />
+    <meta name="twitter:title" content="Convert text to lower Greek" />
+    <meta
+      property="og:url"
+      content="https://axorax.tk/t/text-to-lower-greek-converter"
+    />
+    <meta
+      name="twitter:url"
+      content="https://axorax.tk/t/text-to-lower-greek-converter"
+    />
+    <meta
+      name="description"
+      content="Easily convert text to Greek. Hello → hειισ"
+    />
+    <meta
+      name="twitter:description"
+      content="Easily convert text to Greek. Hello → hειισ"
+    />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1080" />
+    <meta name="keywords" content="greek" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7103747153410969"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <main>
+      <div class="subtitle sm">Convert text to lower Greek</div>
+      <textarea
+        id="i"
+        class="input-1 full-width textarea-convert-1"
+        cols="30"
+        rows="10"
+        placeholder="Type text here..."
+      ></textarea>
+      <button onclick="r()" class="button-1 full-w" style="margin-top: 1rem">
+        Convert
+      </button>
+      <div class="d-1 round" style="margin: 4rem 0"></div>
+      <textarea
+        id="o"
+        class="input-1 full-width textarea-convert-1"
+        cols="30"
+        rows="10"
+        placeholder="Greek output here..."
+      ></textarea>
+    </main>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/t1.js"></script>
+    <script>
+      function r() {
+        const i = document.querySelector("#i");
+        const o = document.querySelector("#o");
+        const v = convertTextToLowerGreek(i.value);
+        o.value = v;
+      }
+      if (navHidden) {
+        document.querySelector(".sm").remove();
+        body.style.paddingTop = "5rem";
+      }
+    </script>
+  </body>
+</html>
