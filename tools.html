@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axile - Tools</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="shortcut icon" href="assets/img/axile.svg" />
+  </head>
+  <body>
+    <main style="margin-top: 5rem">
+      <div class="grid-1"></div>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+      const tools = [
+        "Text to Lower Greek Converter",
+        "Impossible Color Hyperbolic Orange",
+        "Impossible Color Hyperbolic Green",
+        "Impossible Color Stygian Blue",
+        "Impossible Color Self-Luminous Red",
+        "Whiteboard",
+        "Text to Speech",
+        "TruthOrDareBot Gen v1",
+        "Img To Data URL",
+      ];
+      tools.forEach((e) => {
+        const t = `
+        <a href="t/${e.toLowerCase().replaceAll(" ", "-")}.html">
+          <div class="item">
+            <p>${e}</p>
+          </div>
+        </a>
+        `;
+        const div = document.createElement("div");
+        div.innerHTML = t;
+        document.querySelector(".grid-1").append(div);
+        div.replaceWith(...div.childNodes);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axile - Chat</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="assets/js/main.js" defer></script>
+    <link rel="shortcut icon" href="assets/img/axile.svg">
+    <style>
+        #msg-wrapper {
+            width: 100%;
+        }
+        input {
+            margin-top: 2rem;
+            width: 100%!important;
+            max-width: none!important;
+        }
+        input:focus {
+            outline: none;
+        }
+        main {
+            height: 100vh;
+            padding-top: 4rem;
+        }
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+            width: 30rem;
+            max-width: 100%;
+        }
+        .output-wrapper {
+            text-align: left;
+            width: 100%;
+        }
+        #box {
+            padding-right: 1rem;
+            overflow-y: scroll;
+            height: 65vh;
+            word-wrap: break-word;
+        }
+        #msg {
+            padding: .7rem;
+            background: #232323;
+            border-radius: 5px;
+            width: 100%;
+            margin-top: .5rem;
+        }
+        h1 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+
+        <div class="wrapper">
+
+            <div class="output-wrapper">
+                <h1>Chat output</h1>
+                <div id="box">
+                    <div id="msg">Hello there!<br><br>Old messages are not saved. Only new messages will appear here. Type in the input field and press enter to send a message. <strong>New messages are at the top.</strong></div>
+                </div>
+            </div>
+
+            <div id="msg-wrapper">
+                <input id="input" class="input-1" placeholder="Message" />
+            </div>
+            
+        </div>
+
+    </main>
+
+    <script src=https://cdn.pubnub.com/sdk/javascript/pubnub.4.28.2.min.js></script><script>!function(){var e=new PubNub({publishKey:"demo",subscribeKey:"demo"});function n(e){return document.getElementById(e)}var i=n("box"),s=n("input"),a="10chat-demo";e.addListener({message:function(e){i.innerHTML=`<div id="msg">`+(""+e.message).replace(/[<>]/g,"")+"</div>"+i.innerHTML}}),e.subscribe({channels:[a]}),s.addEventListener("keyup",function(n){13===(n.keyCode||n.charCode)&&e.publish({channel:a,message:s.value,x:s.value=""})})}();</script>
+
+</body>
+</html>

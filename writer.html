@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Article Writer v1.0.0</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/a1.css" />
+    <link rel="stylesheet" href="assets/css/writer.css" />
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/writer.js" defer></script>
+    <link rel="shortcut icon" href="assets/img/axile.svg" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="side-bar">
+        <div class="title">Titles</div>
+        <div class="f">
+          <button onclick="iac(`<div class='subtitle'></div>`)">
+            Subtitle
+          </button>
+          <button onclick="iac(`<div class='subtitle sm'></div>`)">
+            Subtitle Small
+          </button>
+        </div>
+        <div class="title">Dividers</div>
+        <div class="f">
+          <button onclick="iac(`<hr>`)">Normal</button>
+          <button onclick="iac(`<div class='d-1'></div>`)">Square</button>
+          <button onclick="iac(`<div class='d-1 round'></div>`)">Round</button>
+        </div>
+        <div class="title">Attention grabbers</div>
+        <div class="f">
+          <button onclick="iac(`<div class='alert'></div>`)">Alert</button>
+          <button onclick="iac(`<div class='box'></div>`)">Box</button>
+          <button onclick="iac(`<div class='box-2'></div>`)">Box Filled</button>
+        </div>
+        <div class="title">others</div>
+        <div class="f">
+          <button onclick="iac(`<div class='code-box-1'></div>`)">Code</button>
+          <button onclick="iac(`<img src='' alt=''>`)">Image</button>
+          <button onclick="iac(`<button class='button-1'></button>`)">
+            Button
+          </button>
+          <button
+            onclick="iac(`<div class='table'><table><thead><th>th_1</th><th>th_2</th><tr><td>td_1</td><td>td_2</td></tr><tr><td>td_3</td><td>td_4</td></tr></thead></table><div>`)"
+          >
+            Table
+          </button>
+          <button
+            onclick="iac(`<div class='accordin-1'><button>title_here</button><div class='content'>description_here</div></div>`)"
+          >
+            Accordin
+          </button>
+          <button onclick="iac(`<div class='discord-app-code-block'></div>`)">
+            Discord Code Block
+          </button>
+          <button onclick="iac(`<span class='t-rainbow'></span>`)">
+            Rainbow Text
+          </button>
+        </div>
+        <div class="title">Lists</div>
+        <div class="f">
+          <button onclick="iac(`<ul><li>item_1</li><li>item_2</li></ul>`)">
+            Bullet
+          </button>
+          <button
+            onclick="iac(`<ul class='armenian'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            armenian
+          </button>
+          <button
+            onclick="iac(`<ul class='circle'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            circle
+          </button>
+          <button onclick="iac(`<ol><li>item_1</li><li>item_2</li></ol>`)">
+            decimal
+          </button>
+          <button
+            onclick="iac(`<ul class='decimal-zero'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            decimal-zero
+          </button>
+          <button
+            onclick="iac(`<ul class='disc'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            disc
+          </button>
+          <button
+            onclick="iac(`<ul class='georgian'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            georgian
+          </button>
+          <button
+            onclick="iac(`<ul class='inside'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            inside
+          </button>
+          <button
+            onclick="iac(`<ul class='alpha'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            alpha
+          </button>
+          <button
+            onclick="iac(`<ul class='greek'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            greek
+          </button>
+          <button
+            onclick="iac(`<ul class='latin'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            latin
+          </button>
+          <button
+            onclick="iac(`<ul class='roman'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            roman
+          </button>
+          <button
+            onclick="iac(`<ul class='outside'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            outside
+          </button>
+          <button
+            onclick="iac(`<ul class='square'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            square
+          </button>
+          <button
+            onclick="iac(`<ul class='upper-alpha'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            upper-alpha
+          </button>
+          <button
+            onclick="iac(`<ul class='upper-latin'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            upper-latin
+          </button>
+          <button
+            onclick="iac(`<ul class='chinese'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            chinese
+          </button>
+          <button
+            onclick="iac(`<ul class='upper-roman'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            upper-roman
+          </button>
+          <button
+            onclick="iac(`<ul class='kannada'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            kannada
+          </button>
+          <button
+            onclick="iac(`<ul class='none'><li>item_1</li><li>item_2</li></ul>`)"
+          >
+            none
+          </button>
+        </div>
+      </div>
+
+      <div class="write">
+        <div class="controls">
+          <button onclick="iac(`<img src='' alt=''>`)">
+            <i class="fa-solid fa-image"></i>
+          </button>
+          <button onclick="iac(`<a href='' target='_blank'></a>`)">
+            <i class="fa-solid fa-link"></i>
+          </button>
+          <button onclick="iac(`<em></em>`)">
+            <i class="fa-solid fa-italic"></i>
+          </button>
+          <button onclick="iac(`<strong></strong>`)">
+            <i class="fa-solid fa-bold"></i>
+          </button>
+          <button onclick="iac(`<u></u>`)">
+            <i class="fa-solid fa-underline"></i>
+          </button>
+          <button onclick="iac(`<s></s>`)">
+            <i class="fa-solid fa-strikethrough"></i>
+          </button>
+          <button onclick="iac(`<mark></mark>`)">
+            <i class="fa-solid fa-marker"></i>
+          </button>
+          <button onclick="iac(`<p class='t-l'></p>`)">
+            <i class="fa-solid fa-align-left"></i>
+          </button>
+          <button onclick="iac(`<p class='t-c'></p>`)">
+            <i class="fa-solid fa-align-center"></i>
+          </button>
+          <button onclick="iac(`<p class='t-r'></p>`)">
+            <i class="fa-solid fa-align-right"></i>
+          </button>
+          <button onclick="iac(`<sup>text</sup>`)">
+            <i class="fa-solid fa-superscript"></i>
+          </button>
+          <button onclick="iac(`<sub>text</sub>`)">
+            <i class="fa-solid fa-subscript"></i>
+          </button>
+        </div>
+        <textarea
+          name=""
+          id="writer"
+          cols="30"
+          rows="10"
+          placeholder="Write article here."
+        ></textarea>
+        <!-- <div contenteditable="true" id="writer"></div> -->
+        <button class="button-1" onclick="copyJSON(this)">
+          <i class="fa-solid fa-copy" style="font-size: 16px"></i> Copy JSON
+        </button>
+        <p
+          style="
+            margin-left: 1rem;
+            margin-top: -5px;
+            user-select: none;
+            opacity: 0.8;
+            color: #959595;
+          "
+        >
+          1. Write 2. Copy 3. Paste in
+          <a href="https://discord.gg/nKUFghjXQu">this server</a>
+        </p>
+      </div>
+
+      <div class="others">
+        <main></main>
+        <div class="details">
+          <div>
+            <input type="text" class="input-1" id="d-t" placeholder="Title" />
+            <input type="text" class="input-1" id="d-a" placeholder="Author" />
+          </div>
+          <input
+            type="text"
+            class="input-1"
+            id="d-d"
+            placeholder="Description"
+          />
+        </div>
+        <p style="color: #ff828241; user-select: none">
+          * Design will be corrected by developers
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
