@@ -5,7 +5,7 @@ const loadMoreBtnSpinner = document.querySelector("#loadMore .spinner-border");
 let showing = -1;
 
 function showCards() {
-  fetch("../axile/assets/data/articles.json")
+  fetch(`${window.location.origin}/axile/assets/data/articles.json`)
     .then((response) => response.json())
     .then((data) => {
       for (let i = 0; i < 9; i++) {

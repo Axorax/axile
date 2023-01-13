@@ -37,11 +37,11 @@ window.addEventListener(
 
 let fileInAnotherFolder = false;
 const DEFAULT_SEARCH_CONTENT_BOX_ITEMS = `
-<li><a href="https://axorax.tk/tag?tag=discord">#discord</a></li>
-<li><a href="https://axorax.tk/tag?tag=math">#math</a></li>
-<li><a href="https://axorax.tk/tag?tag=science">#science</a></li>
-<li><a href="https://axorax.tk/tag?tag=chemistry">#chemistry</a></li>
-<li><a href="https://axorax.tk/tag?tag=greek">#greek</a></li>
+<li><a href="${window.location.origin}/axile/tag?tag=discord">#discord</a></li>
+<li><a href="${window.location.origin}/axile/tag?tag=math">#math</a></li>
+<li><a href="${window.location.origin}/axile/tag?tag=science">#science</a></li>
+<li><a href="${window.location.origin}/axile/tag?tag=chemistry">#chemistry</a></li>
+<li><a href="${window.location.origin}/axile/tag?tag=greek">#greek</a></li>
 <li>...</li>`;
 const NAV_DONATE_CONTENT = `
 <div class="flex-col-wrap-1" style="gap:1rem"><a href="//patreon.com" target="_blank"><button class="button-3">Patreon</button></a>
@@ -369,7 +369,7 @@ function createNavExtraItem(c) {
 }
 
 function navSearchInit() {
-  fetch("../axile/assets/data/articles.json")
+  fetch(`${window.location.origin}/axile/assets/data/articles.json`)
     .then((response) => response.json())
     .then((data) => {
       for (let i = 0; i < Object.keys(data).length; i++) {
@@ -474,7 +474,7 @@ if (document.querySelector("footer")) {
 }
 
 function makeCard(author = "axile.svg", article, appendAt) {
-  fetch("../assets/data/articles.json")
+  fetch(`${window.location.origin}/axile/assets/data/articles.json`)
     .then((response) => response.json())
     .then((data) => {
       let tagDiv = ``;
@@ -576,7 +576,7 @@ function makeCard(author = "axile.svg", article, appendAt) {
 createFixedBtmNotif(`
 
 Help us get a custom domain for this website. &nbsp; <a href="${
-  window.location.origin + '/axile/' + "/a/support-us"
+  window.location.origin + "/axile/" + "/a/support-us"
 }">Learn more.</a> &nbsp; <a href="https://www.patreon.com/axorax" target="_blank"><button class="btm-notif-donate">Donate</button></a>
 
 `);

@@ -122,7 +122,7 @@ accordinBtnAll.forEach((e) => {
   accordinForI++;
 });
 
-fetch("../axile/assets/data/articles.json")
+fetch(`${window.location.origin}/axile/assets/data/articles.json`)
   .then((response) => response.json())
   .then((data) => {
     const ud = data[dataTitle];
@@ -143,7 +143,7 @@ fetch("../axile/assets/data/articles.json")
         );
       }
     }
-    fetch("../axile/assets/data/authors.json")
+    fetch(`${window.location.origin}/axile/assets/data/authors.json`)
       .then((response) => response.json())
       .then((authors) => {
         const author = data[dataTitle].author;
