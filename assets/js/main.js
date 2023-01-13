@@ -576,7 +576,7 @@ function makeCard(author = "axile.svg", article, appendAt) {
 createFixedBtmNotif(`
 
 Help us get a custom domain for this website. &nbsp; <a href="${
-  window.location.origin + "/axile/" + "/a/support-us"
+  window.location.origin + "/axile/a/support-us"
 }">Learn more.</a> &nbsp; <a href="https://www.patreon.com/axorax" target="_blank"><button class="btm-notif-donate">Donate</button></a>
 
 `);
