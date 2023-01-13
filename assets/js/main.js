@@ -544,12 +544,12 @@ function makeCard(author = "axile.svg", article, appendAt) {
           data[article].author
         }"><div style="background: url('../assets/img/${author}');background-size:cover;"></div></a>
         <a href="${
-          window.origin + "/a/" + article
+          window.origin + "/axile/a/" + article
         }.html"><img data-src="../assets/img/banner/${article}.png" alt="Article Banner"></a>
     </div>
     <div class="body${newArticle}">
         <div class="tags">${tagDiv}</div>
-        <a href="${window.origin + "/a/" + article}.html">
+        <a href="${window.origin + "/axile/a/" + article}.html">
             <div class="title" title="${data[article].title}">${
         data[article].title
       }</div>
@@ -576,7 +576,7 @@ function makeCard(author = "axile.svg", article, appendAt) {
 createFixedBtmNotif(`
 
 Help us get a custom domain for this website. &nbsp; <a href="${
-  window.location.origin + "/a/support-us"
+  window.location.origin + '/axile/' + "/a/support-us"
 }">Learn more.</a> &nbsp; <a href="https://www.patreon.com/axorax" target="_blank"><button class="btm-notif-donate">Donate</button></a>
 
 `);
