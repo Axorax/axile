@@ -480,7 +480,7 @@ function makeCard(author = "axile.svg", article, appendAt) {
       let tagDiv = ``;
       data[article].tags.forEach((e) => {
         tagDiv += `<a href="${
-          window.origin + "/tag.html?tag=" + e.replace("#", "")
+          window.origin + "/axile/tag.html?tag=" + e.replace("#", "")
         }">#${e}</a> `;
       });
       const pdarr = data[article].publishDate.split(" ");
@@ -542,10 +542,10 @@ function makeCard(author = "axile.svg", article, appendAt) {
     <div class="head">
         <a href="#author" class="author" data-tooltip="Posted by ${
           data[article].author
-        }"><div style="background: url('../assets/img/${author}');background-size:cover;"></div></a>
+        }"><div style="background: url('${window.location.origin}/axile/assets/img/${author}');background-size:cover;"></div></a>
         <a href="${
           window.origin + "/axile/a/" + article
-        }.html"><img data-src="../assets/img/banner/${article}.png" alt="Article Banner"></a>
+        }.html"><img data-src="${window.location.origin}/axile/assets/img/banner/${article}.png" alt="Article Banner"></a>
     </div>
     <div class="body${newArticle}">
         <div class="tags">${tagDiv}</div>
