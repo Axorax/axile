@@ -369,7 +369,7 @@ function createNavExtraItem(c) {
 }
 
 function navSearchInit() {
-  fetch("../assets/data/articles.json")
+  fetch("../axile/assets/data/articles.json")
     .then((response) => response.json())
     .then((data) => {
       for (let i = 0; i < Object.keys(data).length; i++) {

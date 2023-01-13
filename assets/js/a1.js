@@ -73,7 +73,7 @@ if (document.querySelector("article-settings")) {
 
 detailsPublishDate.href =
   window.origin +
-  "/publishDate.html?date=" +
+  "/axile/publishDate.html?date=" +
   detailsPublishDateSpan.textContent.replaceAll(" ", "_");
 
 // fetch('../assets/data/authors.json')
@@ -122,7 +122,7 @@ accordinBtnAll.forEach((e) => {
   accordinForI++;
 });
 
-fetch("../assets/data/articles.json")
+fetch("../axile/assets/data/articles.json")
   .then((response) => response.json())
   .then((data) => {
     const ud = data[dataTitle];
@@ -143,7 +143,7 @@ fetch("../assets/data/articles.json")
         );
       }
     }
-    fetch("../assets/data/authors.json")
+    fetch("../axile/assets/data/authors.json")
       .then((response) => response.json())
       .then((authors) => {
         const author = data[dataTitle].author;
