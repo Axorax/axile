@@ -1,7 +1,9 @@
-/*  ©️ 2022 - Axile
+/*  ©️ 2023 - Axile
  *  Coded by - Axorax
  *  Support - https://patreon.com/axorax/
  */
+
+const winOrigin = window.origin;
 
 function createLoaderTopBar() {
   const loaderTopBar = `
@@ -103,8 +105,9 @@ function loadNavigation(fileStructure = "d") {
     fileInAnotherFolder = true;
     document.querySelector("nav > a").href = "../index.html";
     document.querySelectorAll("nav img").forEach((e) => {
-      e.src = (".." + e.src)
-        .replace(window.origin, "")
+      e.src = (`${winOrigin}/axile/${e.src}`)
+        .replaceAll(winOrigin, '')
+        .replace('/axile/', winOrigin + '/axile')
         .replace("/a/", "/")
         .replace("/t/", "/")
         .replace("/author/", "/");
@@ -120,13 +123,13 @@ function loadNavigation(fileStructure = "d") {
           .replace("/t/", "/")
           .replace("/author/", "/");
     });
-    document.querySelectorAll(".nav-search-content img").forEach((e) => {
-      e.src = (".." + e.src)
-        .replace(window.origin, "")
-        .replace("/a/", "/")
-        .replace("/t/", "/")
-        .replace("/author/", "/");
-    });
+    // document.querySelectorAll(".nav-search-content img").forEach((e) => {
+    //   e.src = (".." + e.src)
+    //     .replace(window.origin, "")
+    //     .replace("/a/", "/")
+    //     .replace("/t/", "/")
+    //     .replace("/author/", "/");
+    // });
   }
 }
 
@@ -221,7 +224,7 @@ lazyImages.forEach((e) => {
 });
 
 function navDonatePopupFun() {
-  createMessagePopup("Donate to axorax.tk", NAV_DONATE_CONTENT, {
+  createMessagePopup("Donate to axile", NAV_DONATE_CONTENT, {
     zIndex: "999",
   });
 }
