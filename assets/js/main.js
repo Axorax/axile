@@ -105,9 +105,8 @@ function loadNavigation(fileStructure = "d") {
     fileInAnotherFolder = true;
     document.querySelector("nav > a").href = "../index.html";
     document.querySelectorAll("nav img").forEach((e) => {
-      e.src = (`${winOrigin}/axile/${e.src}`)
+      e.src = (`${winOrigin}${e.src}`)
         .replaceAll(winOrigin, '')
-        .replace('/axile/', winOrigin + '/axile')
         .replace("/a/", "/")
         .replace("/t/", "/")
         .replace("/author/", "/");
