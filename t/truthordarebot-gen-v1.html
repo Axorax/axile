@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-MM3W2VF0HL"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MM3W2VF0HL");
+    </script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gen v1 - Axile</title>
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/others.css" />
+    <link rel="shortcut icon" href="../assets/img/axile.svg" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7103747153410969"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      main {
+        padding: 2rem;
+      }
+
+      .wrapper p {
+        color: #ddd;
+        user-select: none;
+      }
+      .wrapper span {
+        font-size: 1.3rem;
+      }
+      hr {
+        margin: 1rem 0;
+      }
+      .gen-btn {
+        font-size: 1.1rem;
+        padding: 0.7rem 1.2rem;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background: #5757fd;
+        transition: 400ms;
+      }
+      .gen-btn:hover {
+        background: #4b4bdc;
+      }
+      header p {
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+      }
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 2rem;
+        margin-top: -2.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p>Truth or Dare Generator</p>
+        <button class="gen-btn" onclick="gen()">Generate</button>
+      </header>
+      <div class="wrapper">
+        <p>Truth:</p>
+        <span class="truth"
+          >Rate Limited; Generate in <span class="time">5</span> seconds</span
+        >
+        <hr />
+        <p>Dare:</p>
+        <span class="dare"
+          >Rate Limited; Generate in <span class="time">5</span> seconds</span
+        >
+        <hr />
+        <p>Would You Rather:</p>
+        <span class="wyr"
+          >Rate Limited; Generate in <span class="time">5</span> seconds</span
+        >
+        <hr />
+        <p>Never Have I Ever:</p>
+        <span class="nhie"
+          >Rate Limited; Generate in <span class="time">5</span> seconds</span
+        >
+        <hr />
+        <p>Paranoia Question:</p>
+        <span class="paranoia"
+          >Rate Limited; Generate in <span class="time">5</span> seconds</span
+        >
+      </div>
+    </main>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/t1.js"></script>
+    <script>
+      if (navHidden) {
+        document.querySelector(".container").style.height = "100vh";
+      }
+    </script>
+    <script>
+      const truth = document.querySelector(".truth");
+      const dare = document.querySelector(".dare");
+      const wyr = document.querySelector(".wyr");
+      const nhie = document.querySelector(".nhie");
+      const paranoia = document.querySelector(".paranoia");
+      let timeout = false;
+      let timeleft = 5;
+      let secondClick = false;
+      function gen() {
+        if (!timeout && !secondClick) {
+          fetch("https://api.truthordarebot.xyz/v1/truth")
+            .then((res) => res.json())
+            .then((data) => {
+              truth.textContent = data.question;
+            });
+          fetch("https://api.truthordarebot.xyz/api/dare")
+            .then((res) => res.json())
+            .then((data) => {
+              dare.textContent = String(data.question).replace(
+                " - ToD Bot Team",
+                ""
+              );
+            });
+          fetch("https://api.truthordarebot.xyz/api/wyr")
+            .then((res) => res.json())
+            .then((data) => {
+              wyr.textContent = data.question;
+            });
+          fetch("https://api.truthordarebot.xyz/api/paranoia")
+            .then((res) => res.json())
+            .then((data) => {
+              paranoia.textContent = data.question;
+            });
+          fetch("https://api.truthordarebot.xyz/api/nhie")
+            .then((res) => res.json())
+            .then((data) => {
+              nhie.textContent = data.question;
+            });
+          timeout = true;
+          secondClick = true;
+          setTimeout(() => {
+            secondClick = false;
+          }, 2000);
+          timeleft = 5;
+          const timeleftinterval = setInterval(() => {
+            timeleft--;
+            console.log(timeleft);
+            if (String(timeleft).includes("-")) {
+              clearInterval(timeleftinterval);
+              timeleft = 0;
+            }
+          }, 1000);
+          setTimeout(() => {
+            timeout = false;
+          }, 5000);
+        } else if (!secondClick) {
+          document.querySelectorAll(".wrapper span").forEach((e) => {
+            e.innerHTML = `Rate Limited; Generate in <span class="time"></span> seconds`;
+          });
+          let timeleftdisplay = setInterval(() => {
+            document.querySelectorAll(".time").forEach((e) => {
+              e.textContent = timeleft;
+            });
+            if (String(timeleft).includes("0")) {
+              clearInterval(timeleftdisplay);
+            }
+          }, 10);
+        }
+      }
+      gen();
+    </script>
+  </body>
+</html>

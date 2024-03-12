@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axile</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/others.css" />
+    <script src="assets/js/main.js" defer></script>
+    <link rel="shortcut icon" href="assets/img/axile.svg" />
+  </head>
+  <body>
+    <main class="publishDate">
+      <h1>Articles published <span class="pubDate"></span></h1>
+
+      <section class="card-wrapper" style="padding-bottom: 3rem"></section>
+    </main>
+
+    <footer></footer>
+
+    <style>
+      .card-wrapper p {
+        font-size: 3rem;
+        opacity: 0.1;
+        width: 100%;
+        margin-top: 8rem;
+        user-select: none;
+        text-align: center;
+      }
+    </style>
+    <script>
+      const winval = window.location.search.split("date=")[1];
+      const date = winval
+        ? winval.replaceAll("_", " ")
+        : console.info("No date provided: Showing all time");
+      document.querySelector(".pubDate").textContent = winval
+        ? "on " + date
+        : "all time";
+      let noResponse = true;
+
+      fetch("assets/data/articles.json")
+        .then((response) => response.json())
+        .then((data) => {
+          if (winval) {
+            for (let i = 0; i < Object.keys(data).length; i++) {
+              const indexDic = Object.keys(data)[i];
+              if (
+                data[indexDic].publishDate
+                  .toLowerCase()
+                  .includes(date.toLowerCase())
+              ) {
+                makeCard(
+                  `${String(data[indexDic].author).replace('axorax', 'Axorax')}.svg`,
+                  Object.keys(data)[i],
+                  ".card-wrapper"
+                );
+                noResponse = false;
+              }
+            }
+            if (noResponse) {
+              const p = document.createElement("p");
+              p.innerText = "NO ARTICLES!";
+              document.querySelector(".card-wrapper").append(p);
+            }
+          } else {
+            for (let i = 0; i < Object.keys(data).length; i++) {
+              const indexDic = Object.keys(data)[i];
+              makeCard(
+                `${String(data[indexDic].author).replace('axorax', 'Axorax')}.svg`,
+                Object.keys(data)[i],
+                ".card-wrapper"
+              );
+            }
+          }
+        });
+    </script>
+  </body>
+</html>

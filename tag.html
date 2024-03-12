@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axile</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/others.css" />
+    <script src="assets/js/main.js" defer></script>
+    <link rel="shortcut icon" href="assets/img/axile.svg" />
+    <style>
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 2rem;
+        margin-top: 5rem;
+        gap: 1rem;
+      }
+      h1 {
+        margin: 0 !important;
+      }
+      .input-2 {
+        width: 14rem !important;
+        font-size: 0.9rem !important;
+        padding: 0.4rem 0.6rem !important;
+        margin-top: 0.3rem;
+      }
+      .tagNotFound {
+        margin-bottom: 6.5rem;
+      }
+      .input-2::-webkit-search-cancel-button {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="tagPage">
+      <header>
+        <h1>Tag: &nbsp;<span class="linkTag"></span></h1>
+        <input type="search" class="input-2" placeholder="search tag" />
+      </header>
+
+      <section class="card-wrapper" style="padding-bottom: 3rem"></section>
+    </main>
+
+    <footer></footer>
+
+    <style>
+      .card-wrapper p {
+        font-size: 3rem;
+        opacity: 0.1;
+        width: 100%;
+        margin-top: 8rem;
+        user-select: none;
+        text-align: center;
+      }
+    </style>
+    <script>
+      let winval = window.location.search.split("tag=")[1];
+      document.querySelector(".linkTag").textContent = winval ? winval : "All";
+      document.title = winval ? "Tag: " + winval : "Tag: All";
+      function loadTag() {
+        let noResponse = true;
+
+        fetch("https://axorax.github.io/axile/assets/data/articles.json")
+          .then((response) => response.json())
+          .then((data) => {
+            if (winval) {
+              for (let i = 0; i < Object.keys(data).length; i++) {
+                const indexDic = Object.keys(data)[i];
+                data[indexDic].tags.forEach((e) => {
+                  if (e == winval) {
+                    makeCard(
+                      `${String(data[indexDic].author).replace('axorax', 'Axorax')}.svg`,
+                      Object.keys(data)[i],
+                      ".card-wrapper"
+                    );
+                    noResponse = false;
+                  }
+                });
+                // if (data[indexDic].publishDate.toLowerCase().includes(date.toLowerCase())) {
+                //     makeCard(`${data[indexDic].author}.svg`, Object.keys(data)[i], '.card-wrapper');
+                //     noResponse = false;
+                // }
+              }
+              if (noResponse) {
+                const p = document.createElement("p");
+                p.classList.add("tagNotFound");
+                p.innerText = "TAG NOT FOUND!";
+                document.querySelector(".card-wrapper").append(p);
+              }
+            } else {
+              for (let i = 0; i < Object.keys(data).length; i++) {
+                const indexDic = Object.keys(data)[i];
+                makeCard(
+                  `${String(data[indexDic].author).replace('axorax', 'Axorax')}.svg`,
+                  Object.keys(data)[i],
+                  ".card-wrapper"
+                );
+              }
+            }
+          });
+      }
+
+      loadTag();
+
+      document.querySelector("input").addEventListener("keydown", (e) => {
+        if (e.keyCode == 13) {
+          winval = String(document.querySelector(".input-2").value);
+          document.querySelector(".linkTag").textContent = winval
+            ? winval
+            : "All";
+          document.title = winval ? "Tag: " + winval : "Tag: All";
+          document.querySelector(".card-wrapper").innerHTML = "";
+          loadTag();
+        } else {
+          return;
+        }
+      });
+    </script>
+  </body>
+</html>

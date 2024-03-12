@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-MM3W2VF0HL"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MM3W2VF0HL");
+    </script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axile</title>
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/t1.js" defer></script>
+    <link rel="shortcut icon" href="../assets/img/axile.svg" />
+    <style>
+      #input-file {
+        display: none;
+      }
+      label {
+        cursor: pointer;
+        text-align: center;
+        width: 25rem;
+        font-size: 1.3rem;
+        padding: 4rem 1rem;
+        max-width: calc(100% - 2rem);
+        border-radius: 6px;
+        border: 2px dashed #7a83ff;
+        background: #7a83ff0d;
+        color: #c1c5fe;
+      }
+      label:hover {
+        background: #7a83ff36;
+        color: #dcdeff;
+      }
+      .upload,
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 4rem);
+      }
+      .copy {
+        padding: 1rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+
+      .copy img {
+        max-width: 100%;
+        width: 22rem;
+      }
+
+      .copy .name {
+        font-size: 1.1rem;
+      }
+
+      .copy .link {
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0.7rem 0.6rem;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        border: none;
+        background: #54b435;
+      }
+
+      .copy .link:hover {
+        background: #379237;
+      }
+    </style>
+  </head>
+  <body>
+    <main style="margin-top: 4rem">
+      <div class="upload">
+        <label for="input-file">
+          Upload Image
+          <input type="file" id="input-file" />
+        </label>
+      </div>
+      <div class="container" style="display: none">
+        <div class="copy">
+          <img />
+          <div class="side">
+            <p class="name"></p>
+            <button class="link">Copy Data URL</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const input = document.querySelector("#input-file"),
+        container = document.querySelector(".container"),
+        upload = document.querySelector(".upload"),
+        copyName = document.querySelector(".copy .name"),
+        copyLink = document.querySelector(".copy .link"),
+        copyImg = document.querySelector(".copy img");
+      input.addEventListener("change", (e) => {
+        const file = input.files[0];
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+          upload.remove();
+          container.style.display = "flex";
+          copyName.textContent = file.name;
+          copyImg.src = reader.result;
+          copyLink.onclick = () => {
+            navigator.clipboard.writeText(reader.result);
+            copyLink.textContent = "Copied Data URL";
+            setTimeout(() => {
+              copyLink.textContent = "Copy Data URL";
+            }, 3000);
+          };
+        });
+
+        reader.readAsDataURL(file);
+      });
+    </script>
+  </body>
+</html>

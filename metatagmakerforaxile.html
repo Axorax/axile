@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meta Tag Maker For Axile</title>
+    <link rel="stylesheet" href="assets/img/axile.svg" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="assets/js/main.js" defer></script>
+    <style>
+      main {
+        margin-top: 4rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .input-1 {
+        resize: none !important;
+      }
+      h2,
+      hr {
+        width: 25rem;
+        max-width: calc(100% - 2rem);
+      }
+      hr {
+        margin: 0.5rem 0 0.9rem 0;
+      }
+      .meta-output {
+        min-height: 3rem;
+        height: 15rem;
+        overflow-y: scroll;
+        color: #ce9172;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <input type="text" class="meta-title input-1" placeholder="Title" /><br />
+      <textarea
+        type="text"
+        class="meta-des input-1"
+        placeholder="Description"
+      ></textarea
+      ><br />
+      <input type="text" class="meta-url input-1" placeholder="URL" /><br />
+      <input type="text" class="meta-img input-1" placeholder="Image" /><br />
+      <input
+        type="text"
+        class="meta-tags input-1"
+        placeholder="Tags(Comma to separate)"
+      /><br />
+      <input
+        type="text"
+        class="meta-date input-1"
+        placeholder="Publish Date(YYYY-MM-DD)"
+      /><br />
+      <button
+        class="result button-1"
+        onclick="metaOutput()"
+        style="width: 25rem; font-size: 1.3rem; padding: 0.9rem 1rem"
+      >
+        Make Meta Tags</button
+      ><br /><br />
+      <h2>Results</h2>
+      <hr />
+      <div contenteditable="true" class="meta-output input-1">
+        <span style="color: #fff">Meta Output</span>
+      </div>
+      <br />
+    </main>
+
+    <script>
+      const o = document.querySelector(".meta-output");
+      const title = document.querySelector(".meta-title");
+      const des = document.querySelector(".meta-des");
+      const url = document.querySelector(".meta-url");
+      const img = document.querySelector(".meta-img");
+      const date = document.querySelector(".meta-date");
+      const tags = document.querySelector(".meta-tags");
+      function metaOutput() {
+        let metaData = `&#60;meta name="HandheldFriendly" content="True"&#62;<br>
+&#60;meta property="article:published_time" content="${date.value}"&#62;<br>
+&#60;meta property="article:modified_time" content="${date.value}"&#62;<br>
+&#60;meta name="twitter:card" content="summary_large_image"&#62;<br>
+&#60;meta property="og:site_name" content="Axorax"&#62;<br>
+&#60;meta name="twitter:site" content="Axorax"&#62;<br>
+&#60;meta property="og:type" content="article"&#62;<br>
+&#60;meta property="og:title" content="${title.value}"&#62;<br>
+&#60;meta name="twitter:title" content="${title.value}"&#62;<br>
+&#60;meta property="og:url" content="${url.value}"&#62;<br>
+&#60;meta name="twitter:url" content="${url.value}"&#62;<br>
+&#60;meta property="og:image" content="${img.value}"&#62;<br>
+&#60;meta name="twitter:image" content="${img.value}"&#62;<br>
+&#60;meta name="description" content="${des.value}"&#62;<br>
+&#60;meta name="twitter:description" content="${des.value}"&#62;<br>
+&#60;meta property="og:image:width" content="1920"&#62;<br>
+&#60;meta property="og:image:height" content="1080"&#62;<br>
+&#60;meta name="keywords" content="${tags.value
+          .replaceAll(" ", "")
+          .replaceAll(",", ", ")}"&#62;`;
+        const tagsArr = tags.value.replaceAll(" ", "").split(",");
+        tagsArr.forEach((e) => {
+          metaData += `<br>&#60;meta property="article:tag" content="${e}"&#62;`;
+        });
+        o.innerHTML = metaData
+          .replaceAll("name=", '<span style="color: #9CDCFE;">name=</span>')
+          .replaceAll(
+            "&#60;meta",
+            '&#60;<span style="color: #569CD6;">meta</span>'
+          )
+          .replaceAll("&#60;", '<span style="color: #80807A;">&#60;</span>')
+          .replaceAll("&#62;", '<span style="color: #80807A;">&#62;</span>')
+          .replaceAll(
+            "property=",
+            '<span style="color: #9CDCFE;">property=</span>'
+          )
+          .replaceAll(
+            "content=",
+            '<span style="color: #9CDCFE;">content=</span>'
+          );
+      }
+    </script>
+  </body>
+</html>

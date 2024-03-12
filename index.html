@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axorax Articles | Programming, Math, Science</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/indexFile.css" />
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/indexFile.js" defer></script>
+    <link rel="shortcut icon" href="assets/img/axile.svg" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:site_name" content="Axorax" />
+    <meta name="twitter:site" content="Axorax" />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="Learn and read articles on various topics."
+    />
+    <meta
+      name="twitter:title"
+      content="Learn and read articles on various topics."
+    />
+    <meta property="og:url" content="https://axorax.tk" />
+    <meta name="twitter:url" content="https://axorax.tk" />
+    <meta
+      property="og:image"
+      content="https://axorax.tk/assets/img/banner/axile-banner.png"
+    />
+    <meta
+      name="twitter:image"
+      content="https://axorax.tk/assets/img/banner/axile-banner.png"
+    />
+    <meta
+      name="description"
+      content="We publish articles on biology, chemistry, mathematics, computer science and more."
+    />
+    <meta
+      name="twitter:description"
+      content="We publish articles on biology, chemistry, mathematics, computer science and more."
+    />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1080" />
+    <meta name="keywords" content="article, axile, axorax" />
+    <meta property="article:tag" content="article" />
+    <meta property="article:tag" content="axile" />
+    <meta property="article:tag" content="axorax" />
+  </head>
+  <body>
+    <main>
+      <div class="site-status">
+        <button onclick="showSiteStatusBox()">Under-development</button>
+        <div class="content">
+          <div>
+            This site is still under-development. You can support us by donating
+            or simply just sharing the site! Thanks for visiting our site! 💖
+          </div>
+          <button class="link" onclick="siteStatusCopyLink(this)">
+            🔗 Copy Link
+          </button>
+        </div>
+      </div>
+
+      <section class="home-landing">
+        <div class="name">Find interesting <span>articles.</span></div>
+        <div class="description">
+          Learn and read articles on science, technology, design and more.
+        </div>
+        <div class="btn-grp">
+          <a href="#articles"
+            ><button class="cta-1 btn-glass-shiny">Read</button></a
+          >
+          <a href="/writer.html"
+            ><button class="cta-1 btn-glass-shiny">Write</button></a
+          >
+        </div>
+        <a href="#articles"
+          ><div
+            class="scroll-down-animation-button"
+            style="
+              margin-bottom: 1rem;
+              opacity: 0.2;
+              left: 50%;
+              transform: translate(-50%);
+            "
+          ></div
+        ></a>
+        <div class="home-info-wrapper">
+          <div class="home-info">
+            <div class="title">
+              <p
+                style="
+                  font-size: 1.7rem;
+                  font-family: 'Inconsolata', sans-serif;
+                  margin: 0 0 8px 0;
+                "
+              >
+                Who are we?
+              </p>
+              Axile is an article publishing website. Support us via patreon!
+            </div>
+            <span>i</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="features">
+        <div class="box">
+          <div class="icon">✓</div>
+          <div class="title">Accurate</div>
+          <p>
+            Correct and factual content. False content reported by users is
+            marked for review and deleted if found to be false.
+          </p>
+        </div>
+        <div class="box">
+          <div class="icon">↪</div>
+          <div class="title">To the point</div>
+          <p>
+            No unnecessary paragraphs to make the article <i>1 million</i> lines
+            long.
+          </p>
+        </div>
+        <div class="box">
+          <div class="icon">◉</div>
+          <div class="title">User Opinions Matter</div>
+          <p>
+            Write your own articles.
+          </p>
+        </div>
+      </section>
+
+      <hr />
+
+      <section id="articles">
+        <div class="catagories1">
+          <a href="tag.html?tag=discord">
+            <div class="item">
+              <div class="box">
+                <p>#Discord</p>
+              </div>
+            </div>
+          </a>
+          <a href="tag.html?tag=science">
+            <div class="item">
+              <div class="box">
+                <p>#Science</p>
+              </div>
+            </div>
+          </a>
+          <a href="tag.html?tag=chemistry">
+            <div class="item">
+              <div class="box">
+                <p>#Chemistry</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="articles">
+          <!-- <div class="card">
+                    <div class="head">
+                        <a href="#author" class="author"><div></div></a>
+                        <a href="#article"><img src="https://netcord.site/content/images/size/w600/2022/08/self-help.jpg" alt=""></a>
+                    </div>
+                    <div class="body">
+                        <a href="#tags"><div class="tags">Discord</div></a>
+                        <a href="#article">
+                            <div class="title">This is how hackers can hack into your discord account</div>
+                            <div class="details"><span>5 hours ago</span> • <span>4 min read</span></div>
+                        </a>
+                    </div>
+                </div> -->
+        </div>
+
+        <div class="article-more">
+          <!-- <button id="loadMore" onclick="loadMore();"><img src="assets/img/ripple-load.svg" src="Loading"><span>Load more</span></button> -->
+          <button id="loadMore" onclick="loadMore();">
+            <div class="spinner-border" style="display: none"></div>
+            <span>Load more</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- <div class="popup-1">
+            <div class="head">
+                <div class="title">Donate to axorax.tk</div>
+                <div class="close">×</div>
+            </div>
+            <div class="body">
+
+            </div>
+        </div> -->
+    </main>
+
+    <footer></footer>
+
+    <script></script>
+  </body>
+</html>

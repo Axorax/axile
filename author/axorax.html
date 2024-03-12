@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axorax - Axile Author</title>
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="shortcut icon" href="../assets/img/axile.svg" />
+    <style>
+      main {
+        padding: 0 2rem;
+      }
+      .landing {
+        width: 100%;
+        min-height: 9rem;
+        border-radius: 6px;
+        padding: 1.5rem 3rem;
+        border: 1px solid #3d3d3d;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+      }
+      .landing .title {
+        font-family: "Roboto", sans-serif;
+        font-size: 2rem;
+      }
+      .landing img {
+        height: 50px;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        border: 2px solid #92adff;
+      }
+      .landing .head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+      }
+      .landing .tags {
+        margin-bottom: 0.8rem;
+        opacity: 0.7;
+        font-size: 14px;
+      }
+      .landing .tags span {
+        text-transform: uppercase;
+        font-family: "Inconsolata", sans-serif;
+      }
+      .landing .tags span:not(:first-child)::before {
+        content: " ◉ ";
+      }
+      .landing .info {
+        font-size: 13px;
+        position: absolute;
+        top: -0.7rem;
+        left: 50%;
+        transform: translate(-50%);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        background: #323232;
+      }
+      .bio {
+        margin-top: 1rem;
+        opacity: 0.9;
+        font-size: 1.2rem;
+      }
+
+      section.links {
+        margin-top: 2rem;
+        margin-left: -2rem;
+        width: 100vw;
+        padding: 2rem 2rem;
+        background: #151515;
+        min-height: 15rem;
+        position: relative;
+      }
+
+      section.links .search {
+        padding: 0.6rem;
+        font-size: 1rem;
+        border: 1px solid #3d3d3d;
+        background: #1b1b1b7c;
+        border-radius: 6px;
+        width: 18rem;
+        max-width: calc(100% - 1rem);
+      }
+
+      section.links .search::placeholder {
+        color: #ffffff4c;
+      }
+
+      section.links .search:focus {
+        outline: none;
+        border-color: #6161fa;
+      }
+
+      section.links .wrapper {
+        margin-top: 1.5rem;
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      section.links .wrapper a {
+        text-decoration: none;
+        color: #fff;
+      }
+
+      section.links .wrapper div {
+        transition: 200ms;
+        font-size: 0.9rem;
+        border-radius: 5px;
+        padding: 0.6rem 0.9rem;
+        width: max-content;
+        min-width: 4rem;
+        background: #1e1e1e7c;
+        text-align: center;
+        backdrop-filter: blur(5px);
+        border: 1px solid #3d3d3d;
+      }
+
+      section.links .wrapper div:hover {
+        color: #fff;
+        background: #5c56fa;
+        border-color: #635dff;
+      }
+    </style>
+  </head>
+  <body>
+    <main style="margin-top: 70px">
+      <section class="landing">
+        <div class="tags">
+          <span>author</span><span>developer</span><span>owner</span>
+        </div>
+        <div class="head">
+          <img src="../assets/img/Axorax.svg" alt="" />
+          <div class="title">Axorax</div>
+        </div>
+        <div class="info"><span class="landingPosts">12</span> posts</div>
+        <div class="bio">{USER_BIO}</div>
+      </section>
+
+      <section class="links">
+        <input type="text" class="search" placeholder="search socials" />
+
+        <div class="wrapper"></div>
+      </section>
+    </main>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/t1.js"></script>
+    <script>
+      let postAmount = 0;
+      let postAmountAdded = 0;
+      let postAmountPopulated = false;
+      fetch("https://axorax.github.io/axile/assets/data/articles.json")
+        .then((res) => res.json())
+        .then((data) => {
+          for (let i = 0; i < Object.keys(data).length; i++) {
+            if (!postAmountPopulated) {
+              if (
+                data[Object.keys(data)[i]].author ==
+                document
+                  .querySelector(".landing .title")
+                  .innerText.toLowerCase()
+              ) {
+                postAmount++;
+              } else {
+                const postAmountAdd = setInterval(() => {
+                  if (postAmountAdded < postAmount) {
+                    document.querySelector(".landingPosts").innerText =
+                      postAmountAdded;
+                    postAmountAdded++;
+                  } else {
+                    document.querySelector(".landingPosts").innerText =
+                      postAmount;
+                    clearInterval(postAmountAdd);
+                    postAmountPopulated = true;
+                  }
+                }, 100);
+              }
+            }
+          }
+        });
+      fetch("https://axorax.github.io/axile/assets/data/authors.json")
+        .then((res) => res.json())
+        .then((data) => {
+          document.querySelector(".bio").innerText =
+            data[
+              document.querySelector(".landing .title").innerText.toLowerCase()
+            ].bio;
+        });
+
+      const socials = [
+        {
+          app: "LinkTree",
+          link: "https://linktr.ee/axoraxcodes",
+        },
+        {
+          app: "YouTube",
+          link: "https://www.youtube.com/c/Axorax",
+        },
+        {
+          app: "Discord",
+          link: "https://discord.gg/nKUFghjXQu",
+        },
+        {
+          app: "Matrix",
+          link: "https://matrix.to/#/#axorax:matrix.org",
+        },
+        {
+          app: "Matrix Space",
+          link: "https://matrix.to/#/#axorax-space:matrix.org",
+        },
+        {
+          app: "Github",
+          link: "https://github.com/Axorax",
+        },
+        {
+          app: "BitBucket",
+          link: "https://bitbucket.org/axorax/",
+        },
+        {
+          app: "Chess",
+          link: "https://www.chess.com/member/axorax",
+        },
+        {
+          app: "Lichess",
+          link: "https://lichess.org/@/Axorax",
+        },
+        {
+          app: "GitLab",
+          link: "https://gitlab.com/axorax",
+        },
+        {
+          app: "Codecademy",
+          link: "https://www.codecademy.com/profiles/axoraxcodes",
+        },
+        {
+          app: "Sololearn",
+          link: "https://www.sololearn.com/profile/27058316",
+        },
+        {
+          app: "Patreon",
+          link: "https://www.patreon.com/axorax",
+        },
+        {
+          app: "Buymeacoffee",
+          link: "https://www.buymeacoffee.com/axorax",
+        },
+        {
+          app: "Dribbble",
+          link: "https://dribbble.com/Axorax",
+        },
+        {
+          app: "TikTok",
+          link: "https://www.tiktok.com/@axoraxdev",
+        },
+        {
+          app: "Pinterest",
+          link: "https://www.pinterest.com/axoraxdev/",
+        },
+        {
+          app: "Codepen",
+          link: "https://codepen.io/axorax",
+        },
+        {
+          app: "Replit",
+          link: "https://replit.com/@Axorax",
+        },
+        {
+          app: "npmjs",
+          link: "https://www.npmjs.com/~axoraxdev",
+        },
+        {
+          app: "Fiverr",
+          link: "https://www.fiverr.com/axorax",
+        },
+        {
+          app: "Ko-fi",
+          link: "https://ko-fi.com/axorax",
+        },
+        {
+          app: "Solo.to",
+          link: "https://solo.to/axorax",
+        },
+        {
+          app: "Stepik",
+          link: "https://stepik.org/users/402539421",
+        },
+        {
+          app: "Reddit",
+          link: "https://www.reddit.com/user/axorax",
+        },
+        {
+          app: "Dev.to",
+          link: "https://dev.to/axorax",
+        },
+        {
+          app: "itch.io",
+          link: "https://axorax.itch.io/",
+        },
+      ];
+
+      socials.forEach((e) => {
+        const a = document.createElement("a");
+        const div = document.createElement("div");
+        div.textContent = e.app;
+        a.href = e.link;
+        a.target = "_blank";
+        a.append(div);
+        document.querySelector("section.links .wrapper").append(a);
+      });
+
+      const s = document.querySelector("section.links .search");
+      s.addEventListener("input", () => {
+        const b = document.querySelectorAll(".wrapper div");
+        const t = s.value.toLowerCase();
+        if (t == "" || t == " ") {
+          b.forEach((e) => {
+            e.style.display = "block";
+          });
+        } else {
+          b.forEach((e) => {
+            if (!e.textContent.toLowerCase().includes(t)) {
+              e.style.display = "none";
+            } else {
+              e.style.display = "block";
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

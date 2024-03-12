@@ -1,0 +1,58 @@
+main {
+  margin-top: 4rem;
+}
+
+.t-1 header {
+  height: calc(100vh - 5rem);
+}
+
+.t-1 .title {
+  font-size: 4rem;
+  margin: 5rem 3rem;
+}
+
+.t-1 header img {
+  background: #2c2c2c;
+  width: 25rem;
+  max-width: calc(100% - 10%);
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  position: absolute;
+  right: 5%;
+  top: 15%;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+.t-1 .skills {
+  padding: 2rem;
+}
+
+.t-1 .skills .box {
+  text-align: center;
+  border: 2px solid #2c2c2c;
+  border-radius: 7px;
+  width: max-content;
+  padding: 1rem 1.2rem;
+  cursor: pointer;
+  transition: 500ms ease;
+}
+
+.t-1 .skills .box img {
+  height: 4.2rem;
+  aspect-ratio: 1/1;
+  filter: grayscale(80%);
+}
+
+.t-1 .skills .box p {
+  margin-top: 10px;
+  color: #858585;
+}
+
+.t-1 .skills .box:hover {
+  transform: translateY(-5px);
+}
+
+.t-1 .skills .box:hover img {
+  filter: grayscale(0);
+}
